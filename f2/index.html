@@ -1,0 +1,312 @@
+
+<style>
+  @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  @keyframes pop { 0%{transform:scale(0)} 60%{transform:scale(1.2)} 100%{transform:scale(1)} }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+  @keyframes slidein { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes twinkle { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  @keyframes shake { 0%,100%{transform:rotate(0deg)} 25%{transform:rotate(-10deg)} 75%{transform:rotate(10deg)} }
+
+  body { margin: 0; font-family: 'Segoe UI', sans-serif; background: transparent; }
+
+  .page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4f0 50%, #fce4ff 100%);
+    padding: 2rem 1rem 3rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .star { position: absolute; font-size: 18px; animation: twinkle 2s infinite; pointer-events: none; }
+
+  .hero-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(255,100,150,0.15);
+    max-width: 420px;
+    margin: 0 auto 1.5rem;
+    padding: 2rem 1.5rem;
+    position: relative;
+    animation: slidein 0.8s ease both;
+  }
+
+  .name-badge {
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    color: white;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 6px 24px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .big-heart {
+    font-size: 60px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+    display: block;
+    margin: 0.5rem 0;
+  }
+
+  .main-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #c0306a;
+    line-height: 1.4;
+    margin: 0.5rem 0;
+  }
+
+  .sub-text {
+    font-size: 14px;
+    color: #888;
+    margin: 0.5rem 0 1.5rem;
+    line-height: 1.6;
+  }
+
+  .reasons-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(255,100,150,0.1);
+    max-width: 420px;
+    margin: 0 auto 1.5rem;
+    padding: 1.5rem;
+    animation: slidein 1s ease both;
+    text-align: left;
+  }
+
+  .reasons-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #c0306a;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .reason-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    background: #fff5f8;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .reason-item:hover { transform: scale(1.03); background: #ffe0ed; }
+
+  .reason-emoji { font-size: 22px; flex-shrink: 0; }
+  .reason-text { font-size: 13.5px; color: #555; line-height: 1.5; }
+
+  .joke-card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(200,100,255,0.1);
+    max-width: 420px;
+    margin: 0 auto 1.5rem;
+    padding: 1.5rem;
+    animation: slidein 1.2s ease both;
+  }
+
+  .joke-title {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 8px;
+  }
+
+  .joke-text {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn {
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 16px rgba(196,77,255,0.25);
+  }
+  .btn:hover { transform: scale(1.05); box-shadow: 0 6px 24px rgba(196,77,255,0.35); }
+  .btn:active { transform: scale(0.97); }
+
+  .abhi-msg {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(255,100,150,0.1);
+    max-width: 420px;
+    margin: 0 auto 1.5rem;
+    padding: 1.5rem 1.5rem 1.8rem;
+    animation: slidein 1.4s ease both;
+  }
+
+  .abhi-msg p {
+    font-size: 14.5px;
+    color: #555;
+    line-height: 1.8;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .signed {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #c0306a;
+    font-weight: 700;
+  }
+
+  .confetti-btn-wrap { max-width: 420px; margin: 0 auto; }
+  .confetti-btn { 
+    background: linear-gradient(135deg, #ff6b9d, #ffaa00);
+    width: 100%;
+    border-radius: 18px;
+    padding: 14px;
+    font-size: 15px;
+  }
+
+  .note { font-size: 12px; color: #bbb; margin-top: 2rem; }
+
+  .floating-hearts {
+    position: relative;
+    height: 50px;
+    max-width: 420px;
+    margin: 0 auto;
+    pointer-events: none;
+  }
+  .fh { position: absolute; font-size: 20px; animation: float 2s ease-in-out infinite; }
+</style>
+
+<div class="page" id="page">
+
+  <div class="floating-hearts">
+    <span class="fh" style="left:5%;animation-delay:0s">💗</span>
+    <span class="fh" style="left:20%;animation-delay:0.3s">✨</span>
+    <span class="fh" style="left:40%;animation-delay:0.6s">💕</span>
+    <span class="fh" style="left:60%;animation-delay:0.2s">🌸</span>
+    <span class="fh" style="left:78%;animation-delay:0.9s">💫</span>
+    <span class="fh" style="left:93%;animation-delay:0.4s">💗</span>
+  </div>
+
+  <div class="hero-card">
+    <div class="name-badge">For Bossmam 👑</div>
+    <span class="big-heart">💝</span>
+    <div class="main-text">Hey Muskan,<br>your smile is non-negotiable! 😤</div>
+    <div class="sub-text">
+      Yes, Abhii sent this.<br>
+      No, he didn't know what else to do.<br>
+      Yes, he's a little desperate. 😅
+    </div>
+  </div>
+
+  <div class="reasons-card">
+    <div class="reasons-title">🌟 Reasons Muskan is literally amazing 🌟</div>
+    <div class="reason-item" onclick="this.style.background='#ffd6e8'">
+      <span class="reason-emoji">👑</span>
+      <div class="reason-text">She's literally called Bossmam. That alone says everything.</div>
+    </div>
+    <div class="reason-item" onclick="this.style.background='#ffd6e8'">
+      <span class="reason-emoji">😂</span>
+      <div class="reason-text">Her friends teased her — which means even they low-key think she's iconic.</div>
+    </div>
+    <div class="reason-item" onclick="this.style.background='#ffd6e8'">
+      <span class="reason-emoji">💪</span>
+      <div class="reason-text">She handles Abhii. That alone qualifies her for a patience award.</div>
+    </div>
+    <div class="reason-item" onclick="this.style.background='#ffd6e8'">
+      <span class="reason-emoji">🌸</span>
+      <div class="reason-text">Her name literally means "smile". The universe planned this from the start.</div>
+    </div>
+    <div class="reason-item" onclick="this.style.background='#ffd6e8'">
+      <span class="reason-emoji">✨</span>
+      <div class="reason-text">She can be angry AND look cute at the same time. That's a rare talent.</div>
+    </div>
+  </div>
+
+  <div class="joke-card">
+    <div class="joke-title">😄 Tap for a joke — because your smile is mandatory</div>
+    <div class="joke-text" id="jokeText">Tap the button below, Bossmam 👇</div>
+    <button class="btn" onclick="newJoke()">Give me a joke ✨</button>
+  </div>
+
+  <div class="abhi-msg">
+    <p>
+      "Muskan, main jaanta hoon tujhe gussa aaya hai.<br>
+      Aur theek hai — tu gussa ho sakti hai.<br>
+      But just know — teri woh smile jab wapas aayegi,<br>
+      duniya phir se theek lagegi. 💕<br><br>
+      Friends ki baatein aane jaati hain —<br>
+      but Abhii tere liye hamesha yahan hai. 🫂"
+    </p>
+    <div class="signed">— Tera Abhii 💙</div>
+  </div>
+
+  <div class="confetti-btn-wrap">
+    <button class="btn confetti-btn" onclick="launchConfetti()">🎉 Tap if you smiled even a little!</button>
+  </div>
+
+  <p class="note">Made with 💗 by Abhii — just for Bossmam</p>
+</div>
+
+<script>
+const jokes = [
+  "Why did Bossmam cross the road? Because she decided to, and nobody argues with Bossmam. 👑",
+  "Abhii tried to write a sorry note. He wrote 'I'm sorry' and then panicked and added 47 heart emojis. 💕💕💕",
+  "Your friends teased you? Tell them Bossmam doesn't get teased — she gets famous. 😌✨",
+  "Muskan is angry = the whole vibe shifts. Even the sun checks if it should set early. 🌅",
+  "Abhii: 'I made you a whole webpage.' Muskan: 'Okay fine, you get one smile.' Abhii: 'YESSSSS!' 😄",
+  "Why is Muskan called Bossmam? Because 'Supreme Ruler of Good Vibes' was too long for a nickname. 👑",
+  "Abhii walked into a joke store. Said 'I need something to make my girlfriend smile.' The shopkeeper said 'Just apologize bro.' 😂",
+  "Muskan's superpower: being annoyed and adorable at the exact same time. Scientists are still studying this. 🔬"
+];
+
+let lastIdx = -1;
+function newJoke() {
+  let idx;
+  do { idx = Math.floor(Math.random() * jokes.length); } while(idx === lastIdx);
+  lastIdx = idx;
+  const el = document.getElementById('jokeText');
+  el.style.opacity = 0;
+  el.style.transition = 'opacity 0.3s';
+  setTimeout(() => {
+    el.textContent = jokes[idx];
+    el.style.opacity = 1;
+  }, 300);
+}
+
+function launchConfetti() {
+  const emojis = ['💗','✨','🌸','💕','💫','👑','😊','🎉'];
+  for(let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      el.style.cssText = `
+        position: fixed;
+        left: ${Math.random()*100}vw;
+        top: -30px;
+        font-size: ${16+Math.random()*20}px;
+        pointer-events: none;
+        z-index: 9999;
+        animation: fall 2s ease-in forwards;
+      `;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 2200);
+    }, i * 60);
+  }
+}
+
+const style = document.createElement('style');
+style.textContent = `@keyframes fall { to { transform: translateY(105vh) rotate(360deg); opacity: 0; } }`;
+document.head.appendChild(style);
+</script>
